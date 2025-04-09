@@ -5,6 +5,7 @@
 <h2>Create New Student</h2>
 <form th:action="@{/students}" method="post" th:object="${student}">
     <label>Name: <input type="text" th:field="*{name}" /></label><br>
+    <label>Age: <input type="number" th:field="*{age}" /></label><br>
     <input type="submit" value="Save"/>
 </form>
 </body>

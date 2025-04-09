@@ -5,10 +5,11 @@
 <h2>List of Students</h2>
 <a th:href="@{/students/new}">+ Add Student</a>
 <table border="1">
-    <tr><th>ID</th><th>Name</th><th>Actions</th></tr>
+    <tr><th>ID</th><th>Name</th><th>Age</th><th>Actions</th></tr>
     <tr th:each="s : ${students}">
         <td th:text="${s.id}"></td>
         <td th:text="${s.name}"></td>
+        <td th:text="${s.age}"></td>
         <td>
             <a th:href="@{'/students/edit/' + ${s.id}}">Edit</a> |
             <a th:href="@{'/students/delete/' + ${s.id}}">Delete</a>
