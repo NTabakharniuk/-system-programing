@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head><title>Students</title></head>
+<body>
+<h2>List of Students</h2>
+<div sec:authorize="hasRole('ADMIN')">
+    <a th:href="@{/students/new}">+ Add Student</a>
+</div>
+
+<table border="1">
+    <tr><th>ID</th><th>Name</th><th>Age</th><th>Actions</th></tr>
+    <tr th:each="s : ${students}">
+        <td th:text="${s.id}"></td>
+        <td th:text="${s.name}"></td>
+        <td th:text="${s.age}"></td>
+
+        <td>
+            <div sec:authorize="hasRole('ADMIN')">
+                <a th:href="@{'/students/edit/' + ${s.id}}">Edit</a> |
+                <a th:href="@{'/students/delete/' + ${s.id}}">Delete</a>
+            </div>
+        </td>
+
+
+    </tr>
+</table>
+
+<form th:action="@{/logout}" method="post">
+    <button type="submit">Вийти</button>
+</form>
+
+</body>
+</html>
